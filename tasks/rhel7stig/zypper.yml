@@ -14,20 +14,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-- name: Ensure RPM verification task has finished
-  async_status:
-    jid: "{{ rpmverify_task.ansible_job_id }}"
-  failed_when: False
-  changed_when: False
-  register: job_result
-  until: job_result.finished
-  retries: 30
-  when:
-    - rpmverify_task is not skipped
-  tags:
-    - rpm
-    - high
-    - V-71855
+#- name: Ensure RPM verification task has finished
+#  async_status:
+#    jid: "{{ rpmverify_task.ansible_job_id }}"
+#  failed_when: False
+#  changed_when: False
+#  register: job_result
+#  until: job_result.finished
+#  retries: 30
+#  when:
+#    - rpmverify_task is not skipped
+#  tags:
+#    - rpm
+#    - high
+#    - V-71855
 
 - name: V-71855 - Get files with invalid checksums (rpm)
   shell: "grep '^..5' {{ temp_dir }}/rpmverify.txt | awk '{ print $NF }'"

@@ -51,6 +51,24 @@
   tags:
     - always
 
+#- name: Ensure RPM verification task has finished
+#  async_status:
+#    jid: "{{ rpmverify_task.ansible_job_id }}"
+#  changed_when: False
+#  register: job_result
+#  until: job_result.finished
+#  delay: 30
+#  retries: 30
+#  when:
+#    - rpmverify_task is not skipped
+#    - not check_mode | bool
+#    - ansible_os_family | lower in ['redhat', 'suse']
+#  tags:
+#    - rpm
+#    - high
+#    - V-71855
+
+
 # NOTE(mhayden): EPEL is only needed for the clamav packages. We should only
 # install EPEL if the deployer asked for clamav to be installed.
 - name: Install EPEL repository
