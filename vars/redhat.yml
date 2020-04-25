@@ -61,8 +61,8 @@ stig_packages_rhel7:
     state: "{{ security_package_state }}"
     enabled: True
   - packages:
-      - libselinux-python
-      - policycoreutils-python
+      - python3-libselinux
+      - python3-policycoreutils
       - selinux-policy
       - selinux-policy-targeted
     state: "{{ security_package_state }}"
